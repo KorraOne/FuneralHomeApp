@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Additional Forms</h3>
+<div class="form-tabs">
+    <a class="form-tab" href="{{ url_for('form_info', funeral_id=data.FuneralId) }}">Info</a>
+    <a class="form-tab" href="{{ url_for('form_booking', funeral_id=data.FuneralId) }}">Booking</a>
+    <a class="form-tab" href="{{ url_for('form_service', funeral_id=data.FuneralId) }}">Service</a>
+    <a class="form-tab" href="{{ url_for('form_papers', funeral_id=data.FuneralId) }}">Papers</a>
+    <a class="form-tab" href="{{ url_for('form_finances', funeral_id=data.FuneralId) }}">Finance</a>
+</div>
+<h2>Funeral Details</h2>
+<p><strong>Deceased:</strong> {{ data.DeceasedName }}</p>
+<p><strong>DOB:</strong> {{ data.DateOfBirth }} | <strong>DOD:</strong> {{ data.DateOfDeath }}</p>
+<p><strong>Client:</strong> {{ data.ClientName }} ({{ data.RelationToDeceased }})</p>
+<p><strong>Contact:</strong> {{ data.ClientContact }}</p>
+<p><strong>Location:</strong> {{ data.Location }}</p>
+<p><strong>Date:</strong> {{ data.FuneralDate }}</p>
+<p><strong>Staff:</strong> {{ data.StaffName }} — {{ data.JobTitle }}</p>
+<p><strong>Staff Contact:</strong> {{ data.StaffContact }}</p>
+<p><strong>Invoice:</strong> {{ data.InvoiceDetails }} ({{ data.InvoiceStatus }})</p>
+{% endblock %}

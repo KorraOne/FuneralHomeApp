@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Full Funeral Record</h2>
+<form method="post">
+    <fieldset>
+        <legend>Client (Next of Kin / Executor)</legend>
+        <label>Name: <input type="text" name="client_name" required></label><br>
+        <label>Contact: <input type="text" name="client_contact"></label><br>
+        <label>Relation: <input type="text" name="relation"></label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Deceased Details</legend>
+        <label>First Name: <input type="text" name="deceased_first" required></label><br>
+        <label>Last Name: <input type="text" name="deceased_last" required></label><br>
+        <label>Date of Birth: <input type="date" name="dob"></label><br>
+        <label>Date of Death: <input type="date" name="dod"></label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Funeral Information</legend>
+        <label>Location: <input type="text" name="location"></label><br>
+        <label>Funeral Date: <input type="date" name="funeral_date"></label><br>
+        <label>Staff:
+            <select name="staff_id">
+                {% for s in staff_list %}
+                    <option value="{{ s['StaffId'] }}">{{ s['Name'] }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </fieldset>
+
+    <button type="submit">Submit Record</button>
+</form>
+{% endblock %}

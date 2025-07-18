@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Funeral Records</h2>
+    <table>
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Deceased</th>
+              <th>Age</th>
+              <th>Client</th>
+              <th>Funeral Date</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for f in funerals %}
+          <tr>
+              <td>{{ f.FuneralId }}</td>
+              <td><a href="{{ url_for('funeral_detail', id=f.FuneralId) }}">{{ f.DeceasedName }}</a></td>
+              <td>{{ f.DateSummary }}</td>
+              <td>{{ f.ClientDisplay }}</td>
+              <td>{{ f.FuneralDate or '-' }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}

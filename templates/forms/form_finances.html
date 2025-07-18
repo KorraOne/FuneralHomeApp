@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Finance Details for Funeral #{{ funeral_id }}</h2>
+<form method="POST" action="{{ url_for('form_finances', funeral_id=funeral_id) }}">
+
+    <fieldset>
+        <legend>Next of Kin / Executor Info</legend>
+        <label>Name of Deceased: <input type="text" name="deceased_name"></label><br>
+        <label>NOK/Executor: <input type="text" name="executor_name"></label><br>
+        <label>Address: <input type="text" name="executor_address"></label><br>
+        <label>Phone: <input type="text" name="executor_phone"></label><br>
+        <label>Mobile: <input type="text" name="executor_mobile"></label><br>
+        <label>Email: <input type="email" name="executor_email"></label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Expenses</legend>
+        {% for item in ['Pick up transfer', 'Delivery transfer', 'Limo/Transport', 'Body Prep', 'Embalm', 'Coffin', 'Urn', 'Cremation/Burial', 'MCB', 'Livestreaming', 'Florist', 'Catering', 'Printing'] %}
+            <label>{{ item }}:
+                Qty <input type="number" name="expenses_{{ loop.index }}_qty" min="0" style="width: 60px;">
+                Cost <input type="number" name="expenses_{{ loop.index }}_cost" step="0.01" style="width: 100px;">
+            </label><br>
+        {% endfor %}
+    </fieldset>
+
+    <fieldset>
+        <legend>Invoice Items</legend>
+        {% for i in range(1, 6) %}
+            <label>Item {{ i }}:
+                Description <input type="text" name="invoice_{{ i }}_desc">
+                Qty <input type="number" name="invoice_{{ i }}_qty" min="0" style="width: 60px;">
+                Cost <input type="number" name="invoice_{{ i }}_cost" step="0.01" style="width: 100px;">
+            </label><br>
+        {% endfor %}
+    </fieldset>
+
+    <button type="submit">Save Finance Details</button>
+</form>
+{% endblock %}

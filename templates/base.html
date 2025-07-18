@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funeral Home App</title>
+    <link id="themeStylesheet" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <select id="themeSelector">
+        <option value="style1">Style 1</option>
+        <option value="style2">Style 2</option>
+        <option value="style3">Style 3</option>
+    </select>
+    <header>
+        <h1>Funeral Home Management</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Dashboard</a>
+            <a href="{{ url_for('add_funeral_record') }}">Add Funeral</a>
+            <!-- You’ll add more here later -->
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+<script>
+document.getElementById("themeSelector").addEventListener("change", function() {
+    const theme = this.value;
+    const stylesheet = document.getElementById("themeStylesheet");
+
+    const themes = {
+        "style1": "{{ url_for('static', filename='css/style.css') }}",
+        "style2": "{{ url_for('static', filename='css/style2.css') }}",
+        "style3": "{{ url_for('static', filename='css/style3.css') }}"
+    };
+
+    stylesheet.href = themes[theme];
+});
+</script>
+</html>

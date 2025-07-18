@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Service Details for Funeral #{{ funeral_id }}</h2>
+<form method="POST" action="{{ url_for('form_service', funeral_id=funeral_id) }}">
+
+    <fieldset>
+        <legend>General Service Flags</legend>
+        <label><input type="checkbox" name="vad"> VAD</label><br>
+        <label><input type="checkbox" name="cremation"> Cremation</label><br>
+        <label><input type="checkbox" name="nc"> NC</label><br>
+        <label><input type="checkbox" name="burial"> Burial</label><br>
+        <label><input type="checkbox" name="viewing"> Viewing</label><br>
+        <label><input type="checkbox" name="limo_trans"> Limo/Transport</label><br>
+        <label><input type="checkbox" name="coffin"> Coffin</label><br>
+        <label><input type="checkbox" name="urn"> Urn</label><br>
+        <label><input type="checkbox" name="livestream"> Livestream</label><br>
+        <label><input type="checkbox" name="florist"> Florist</label><br>
+        <label><input type="checkbox" name="marquee"> Marquee</label><br>
+        <label><input type="checkbox" name="dvd"> DVD</label><br>
+        <label><input type="checkbox" name="embalm"> Embalm</label><br>
+        <label><input type="checkbox" name="catering"> Catering</label><br>
+        <label><input type="checkbox" name="printing"> Printing</label><br>
+        <label><input type="checkbox" name="other_flag"> Other</label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Viewing Location</legend>
+        <label>Address: <input type="text" name="viewing_address"></label><br>
+        <label>Date: <input type="date" name="viewing_date"></label><br>
+        <label>Time: <input type="text" name="viewing_time"></label><br>
+        <label>Contact: <input type="text" name="viewing_contact"></label><br>
+    </fieldset>
+
+    {% for service in ['catering', 'transport', 'livestream', 'florist', 'dvd', 'embalm', 'coffin', 'urn', 'marquee', 'printing', 'other'] %}
+    <fieldset>
+        <legend>{{ service|capitalize }} Company</legend>
+        <label>Address: <input type="text" name="{{ service }}_address"></label><br>
+        <label>Contact: <input type="text" name="{{ service }}_contact"></label><br>
+        <label>Mobile: <input type="text" name="{{ service }}_mobile"></label><br>
+        <label>Email: <input type="email" name="{{ service }}_email"></label><br>
+    </fieldset>
+    {% endfor %}
+
+    <button type="submit">Save Service Details</button>
+</form>
+{% endblock %}

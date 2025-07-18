@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Funeral Information Form</h2>
+
+<form method="post" class="info-form">
+    <fieldset>
+        <legend>Deceased Information</legend>
+        <label>Name of Deceased: 
+            <input type="text" name="deceased_name">
+        </label>
+        <label>Address:
+            <input type="text" name="deceased_address">
+        </label>
+        <label>Date of Birth:
+            <input type="date" name="date_of_birth">
+        </label>
+        <label>Date of Death:
+            <input type="date" name="date_of_death">
+        </label>
+        <label>Age:
+            <input type="number" name="age" min="0">
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Client / Executor Details</legend>
+        <label>Name:
+            <input type="text" name="client_name">
+        </label>
+        <label>Contact:
+            <input type="text" name="client_contact">
+        </label>
+        <label>Relation to Deceased:
+            <input type="text" name="relation">
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Funeral Type & Flags</legend>
+        <label><input type="checkbox" name="cremation"> Cremation</label>
+        <label><input type="checkbox" name="burial"> Burial</label>
+        <label><input type="checkbox" name="direct"> Direct</label>
+        <label><input type="checkbox" name="viewing"> Viewing</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Scheduling</legend>
+        <label>Collection Date:
+            <input type="date" name="collection_date">
+        </label>
+        <label>Consultation Date:
+            <input type="date" name="consultation_date">
+        </label>
+    </fieldset>
+
+    <button type="submit">Save Info</button>
+</form>
+{% endblock %}

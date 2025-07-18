@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Booking Details for Funeral #{{ funeral_id }}</h2>
+<form method="POST" action="{{ url_for('form_booking', funeral_id=funeral_id) }}">
+
+    <fieldset>
+        <legend>Viewing & Service</legend>
+        <label>Viewing Booked: <input type="text" name="viewing_booked"></label><br>
+        <label>Day/Date: <input type="text" name="viewing_date"></label><br>
+        <label>Viewing Address: <input type="text" name="viewing_address"></label><br>
+        <label>Viewing Contact: <input type="text" name="viewing_contact"></label><br>
+        <label>Viewing Phone: <input type="text" name="viewing_phone"></label><br>
+        <label>Viewing Time: <input type="text" name="viewing_time"></label><br>
+        <label>Number of Jumpers: <input type="number" name="jumper_count"></label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Locations & Logistics</legend>
+        <label>Who's Collecting: <input type="text" name="collector_name"></label><br>
+        <label>Newspaper Details: <input type="text" name="newspaper_notes"></label><br>
+        <label>Chapel Booking: <input type="text" name="chapel_booking"></label><br>
+        <label>Cemetery Booking: <input type="text" name="cemetery_booking"></label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Celebrant Information</legend>
+        <label>Celebrant Name: <input type="text" name="celebrant_name"></label><br>
+        <label>Celebrant Phone: <input type="text" name="celebrant_phone"></label><br>
+        <label>Celebrant Email: <input type="email" name="celebrant_email"></label><br>
+        <label>Service Type: <input type="text" name="service_type"></label><br>
+    </fieldset>
+
+    <button type="submit">Save Booking Details</button>
+</form>
+{% endblock %}

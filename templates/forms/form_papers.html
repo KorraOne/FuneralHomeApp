@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Medical & Paperwork for Funeral #{{ funeral_id }}</h2>
+<form method="POST" action="{{ url_for('form_papers', funeral_id=funeral_id) }}">
+
+    <fieldset>
+        <legend>Deceased Details</legend>
+        <label>Name of Deceased: <input type="text" name="deceased_name"></label><br>
+        <label>Pick-up Address: <input type="text" name="pickup_address"></label><br>
+        <label>Date of Birth: <input type="date" name="dob"></label><br>
+        <label>Date of Death: <input type="date" name="dod"></label><br>
+        <label>Age: <input type="text" name="age" readonly></label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Next of Kin / Executor</legend>
+        <label>Name: <input type="text" name="executor_name"></label><br>
+        <label>Contact Number: <input type="text" name="executor_contact"></label><br>
+        <label>Email: <input type="email" name="executor_email"></label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Documents Submitted</legend>
+        <label><input type="checkbox" name="cert_death"> Death Certificate received</label><br>
+        <label><input type="checkbox" name="crem_permit"> Cremation Permit submitted</label><br>
+        <label><input type="checkbox" name="doctor_form"> Doctor’s Form provided</label><br>
+        <label><input type="checkbox" name="nda_signed"> NDA / Release signed</label><br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Internal Notes</legend>
+        <textarea name="notes" rows="6" cols="60" placeholder="Additional observations or pending paperwork..."></textarea>
+    </fieldset>
+
+    <button type="submit">Save Paperwork</button>
+</form>
+{% endblock %}
