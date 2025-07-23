@@ -2,38 +2,51 @@
 {% block content %}
 <h2>Finance Details for Funeral #{{ funeral_id }}</h2>
 <form method="POST" action="{{ url_for('form_finances', funeral_id=funeral_id) }}">
-
     <fieldset>
-        <legend>Next of Kin / Executor Info</legend>
-        <label>Name of Deceased: <input type="text" name="deceased_name"></label><br>
-        <label>NOK/Executor: <input type="text" name="executor_name"></label><br>
-        <label>Address: <input type="text" name="executor_address"></label><br>
-        <label>Phone: <input type="text" name="executor_phone"></label><br>
-        <label>Mobile: <input type="text" name="executor_mobile"></label><br>
-        <label>Email: <input type="email" name="executor_email"></label><br>
+        <legend>Personal Details</legend>
+        <label>Date: <input type="date" name="date"></label><br>
+        <label>Name of Deceased: <input type="text" name="name_deceased"></label><br>
+        <label>Pick-Up Address: <input type="text" name="pickup_address"></label><br>
+        <label>Date of Birth: <input type="date" name="dob"></label><br>
+        <label>Date of Death: <input type="date" name="dod"></label><br>
+        <label>Age: <input type="number" name="age"></label><br>
+        <label>Executor Name: <input type="text" name="executor"></label>
     </fieldset>
 
     <fieldset>
-        <legend>Expenses</legend>
-        {% for item in ['Pick up transfer', 'Delivery transfer', 'Limo/Transport', 'Body Prep', 'Embalm', 'Coffin', 'Urn', 'Cremation/Burial', 'MCB', 'Livestreaming', 'Florist', 'Catering', 'Printing'] %}
-            <label>{{ item }}:
-                Qty <input type="number" name="expenses_{{ loop.index }}_qty" min="0" style="width: 60px;">
-                Cost <input type="number" name="expenses_{{ loop.index }}_cost" step="0.01" style="width: 100px;">
-            </label><br>
+    <legend>Expenses and Invoice</legend>
+    <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Expenses Qty</th>
+            <th>Expenses Cost</th>
+            <th>Invoice Qty</th>
+            <th>Invoice Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in ['Pick up transfer', 'Delivery transfer', 'Limo/ Transport', 'Body Prep', 'Embalm', 'Coffin', 'Urn', 'Cremation/ Burial', 'MCB', 'Livestreaming', 'Florist', 'Catering', 'Printing'] %}
+        <tr>
+            <td>{{ item }}</td>
+            <td><input type="number" name="expenses_qty_{{ loop.index }}" class="expenses-qty" min="0" style="width: 60px;"></td>
+            <td><input type="text" name="expenses_cost_{{ loop.index }}" class="expenses-cost"></td>
+            <td><input type="number" name="invoice_qty_{{ loop.index }}" class="invoice-qty" min="0" style="width: 60px;"></td>
+            <td><input type="text" name="invoice_cost_{{ loop.index }}" class="invoice-cost"></td>
+        </tr>
         {% endfor %}
-    </fieldset>
-
-    <fieldset>
-        <legend>Invoice Items</legend>
-        {% for i in range(1, 6) %}
-            <label>Item {{ i }}:
-                Description <input type="text" name="invoice_{{ i }}_desc">
-                Qty <input type="number" name="invoice_{{ i }}_qty" min="0" style="width: 60px;">
-                Cost <input type="number" name="invoice_{{ i }}_cost" step="0.01" style="width: 100px;">
-            </label><br>
-        {% endfor %}
+        <tr>
+            <td><strong>Total</strong></td>
+            <td></td>
+            <td><input type="text" id="expenses_total" value="$-" readonly></td>
+            <td></td>
+            <td><input type="text" id="invoice_total" value="$-" readonly></td>
+        </tr>
+        </tbody>
+    </table>
     </fieldset>
 
     <button type="submit">Save Finance Details</button>
 </form>
+<script src="{{ url_for('static', filename='js/form_finances.js') }}"></script>
 {% endblock %}

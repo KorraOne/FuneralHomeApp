@@ -4,30 +4,88 @@
 <form method="POST" action="{{ url_for('form_booking', funeral_id=funeral_id) }}">
 
     <fieldset>
-        <legend>Viewing & Service</legend>
-        <label>Viewing Booked: <input type="text" name="viewing_booked"></label><br>
-        <label>Day/Date: <input type="text" name="viewing_date"></label><br>
-        <label>Viewing Address: <input type="text" name="viewing_address"></label><br>
-        <label>Viewing Contact: <input type="text" name="viewing_contact"></label><br>
-        <label>Viewing Phone: <input type="text" name="viewing_phone"></label><br>
-        <label>Viewing Time: <input type="text" name="viewing_time"></label><br>
-        <label>Number of Jumpers: <input type="number" name="jumper_count"></label><br>
+        <legend>Personal Details</legend>
+        <label>Date: <input type="date" name="date"></label><br>
+        <label>Name of Deceased: <input type="text" name="name_deceased"></label><br>
+        <label>Pick-Up Address: <input type="text" name="pickup_address"></label><br>
+        <label>Date of Birth: <input type="date" name="dob"></label><br>
+        <label>Date of Death: <input type="date" name="dod"></label><br>
+        <label>Age: <input type="number" name="age"></label><br>
+        <label>Executor Name: <input type="text" name="executor"></label>
     </fieldset>
 
     <fieldset>
-        <legend>Locations & Logistics</legend>
-        <label>Who's Collecting: <input type="text" name="collector_name"></label><br>
-        <label>Newspaper Details: <input type="text" name="newspaper_notes"></label><br>
-        <label>Chapel Booking: <input type="text" name="chapel_booking"></label><br>
-        <label>Cemetery Booking: <input type="text" name="cemetery_booking"></label><br>
+        <legend>Extra Details</legend>
+        <label>VAD:
+            <select name="vad">
+            <option>yes</option>
+            <option>no</option>
+            <option selected>n/a</option>
+            </select>
+        </label><br>
+        <label>Cremation:
+            <select name="cremation">
+            <option>yes</option>
+            <option>no</option>
+            <option selected>n/a</option>
+            </select>
+        </label><br>
+        <label>Burial:
+            <select name="burial">
+            <option>yes</option>
+            <option>no</option>
+            <option selected>n/a</option>
+            </select>
+        </label><br>
+        <label>Direct:
+            <select name="direct">
+            <option>yes</option>
+            <option>no</option>
+            <option selected>n/a</option>
+            </select>
+        </label><br>
+
+        <label>Newspaper: <input type="text" name="newspaper"></label><br>
+        <label>Newspaper Date: <input type="date" name="newspaperDate"></label>
     </fieldset>
 
     <fieldset>
-        <legend>Celebrant Information</legend>
-        <label>Celebrant Name: <input type="text" name="celebrant_name"></label><br>
-        <label>Celebrant Phone: <input type="text" name="celebrant_phone"></label><br>
-        <label>Celebrant Email: <input type="email" name="celebrant_email"></label><br>
-        <label>Service Type: <input type="text" name="service_type"></label><br>
+        <legend>Viewing Details</legend>
+        <label>Viewing: <input type="text" name="viewing_details"></label><br>
+        <label>Address: <input type="text" name="viewing_address"></label><br>
+        <label>Contact: <input type="text" name="viewing_contact"></label><br>
+        <label>Phone: <input type="tel" name="viewing_phone"></label><br>
+        <label>Date: <input type="date" name="viewing_date"></label><br>
+        <label>Time: <input type="time" name="viewing_time"></label><br>
+        <label>Numbers:<input type="number" name="viewing_numbers" min="0"></label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Cemetery Details</legend>
+        <label>Cemetery: <input type="text" name="cemetery_details"></label><br>
+        <label>Phone: <input type="tel" name="cemetery_phone"></label><br>
+        <label>Date: <input type="date" name="cemetery_date"></label><br>
+        <label>Time: <input type="time" name="cemetery_time"></label><br>
+        <label>Numbers:<input type="number" name="cemetery_numbers" min="0"></label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Chapel Details</legend>
+        <label>Chapel: <input type="text" name="chapel_details"></label><br>
+        <label>Address: <input type="text" name="chapel_address"></label><br>
+        <label>Contact: <input type="text" name="chapel_contact"></label><br>
+        <label>Phone: <input type="tel" name="chapel_phone"></label><br>
+        <label>Date: <input type="date" name="chapel_date"></label><br>
+        <label>Time: <input type="time" name="chapel_time"></label><br>
+        <label>Numbers:<input type="number" name="chapel_numbers" min="0"></label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Celebrant Details</legend>
+        <label>Viewing: <input type="text" name="celebrant_details"></label><br>
+        <label>Contact: <input type="text" name="celebrant_contact"></label><br>
+        <label>Phone: <input type="tel" name="celebrant_phone"></label><br>
+        <label>Email: <input type="email" name="celebrant_email"></label><br>
     </fieldset>
 
     <button type="submit">Save Booking Details</button>
